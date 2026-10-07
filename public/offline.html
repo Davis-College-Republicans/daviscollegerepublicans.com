@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Davis College Republicans</title>
+    <link rel="stylesheet" href="/offline.css" />
+  </head>
+  <body>
+    <div class="shell" id="shell" role="status" aria-live="polite">
+      <div class="shell-inner">
+        <img class="shell-logo" src="/DCR.webp" alt="" width="80" height="80" />
+        <h1 class="shell-title" style="font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-style:normal;font-weight:700">
+          Davis College Republicans
+        </h1>
+        <div class="shell-indicator">
+          <div class="shell-spinner" aria-hidden="true"></div>
+          <svg
+            class="shell-offline-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 20h.01" />
+            <path d="M8.5 16.429a5 5 0 0 1 7 0" />
+            <path d="M5 12.859a10 10 0 0 1 5.17-2.857" />
+            <path d="M19 12.859a10 10 0 0 0-2.007-1.423" />
+            <path d="M2 8.82a15 15 0 0 1 4.177-2.643" />
+            <path d="M22 8.82a15 15 0 0 0-11.288-3.764" />
+            <path d="m2 2 20 20" />
+          </svg>
+          <p class="shell-status" id="shell-status">Loading…</p>
+          <p class="shell-offline-message">
+            We can’t reach the site. Please check your internet connection and try again.
+          </p>
+          <button type="button" class="shell-retry" id="shell-retry">Retry</button>
+        </div>
+      </div>
+      <p class="shell-status-detail">
+        Check
+        <a href="https://services.vijitdua.com" target="_blank" rel="noopener noreferrer"
+          >services.vijitdua.com</a
+        >
+        if the issue persists.
+      </p>
+    </div>
+    <script>
+      (function () {
+        var OFFLINE_AFTER_MS = 4000;
+        var POLL_MS = 1500;
+        var shell = document.getElementById("shell");
+        var statusEl = document.getElementById("shell-status");
+        var retryBtn = document.getElementById("shell-retry");
+        var params = new URLSearchParams(location.search);
+        var forceOffline = params.get("__dev_offline") === "1";
+        var startedAt = Date.now();
+        var probeOk = false;
+        var waitingForRetry = false;
+        var pollTimer;
+        var tickTimer;
+
+        function returnPath() {
+          var path = location.pathname + location.search + location.hash;
+          if (path.indexOf("/offline.html") === 0) return "/";
+          return path || "/";
+        }
+
+        function setOffline(offline) {
+          shell.classList.toggle("is-offline", offline);
+          if (!offline && statusEl) {
+            var elapsed = Date.now() - startedAt;
+            statusEl.textContent = elapsed > 2500 ? "Still loading…" : "Loading…";
+          }
+        }
+
+        function stop() {
+          waitingForRetry = true;
+          if (pollTimer) clearTimeout(pollTimer);
+          pollTimer = null;
+        }
+
+        function go() {
+          location.replace(returnPath());
+        }
+
+        function probe() {
+          if (waitingForRetry || forceOffline) return;
+          var ctrl = new AbortController();
+          var kill = setTimeout(function () {
+            ctrl.abort();
+          }, 2500);
+          fetch(returnPath(), {
+            method: "GET",
+            cache: "no-store",
+            credentials: "same-origin",
+            signal: ctrl.signal,
+          })
+            .then(function (res) {
+              if (res && res.ok) {
+                probeOk = true;
+                go();
+              }
+            })
+            .catch(function () {})
+            .finally(function () {
+              clearTimeout(kill);
+              if (!probeOk && !waitingForRetry) {
+                pollTimer = setTimeout(probe, POLL_MS);
+              }
+            });
+        }
+
+        function tick() {
+          if (probeOk) return;
+          var elapsed = Date.now() - startedAt;
+          if (forceOffline || elapsed >= OFFLINE_AFTER_MS) {
+            setOffline(true);
+            stop();
+            return;
+          }
+          setOffline(false);
+          tickTimer = setTimeout(tick, 200);
+        }
+
+        retryBtn.addEventListener("click", function () {
+          forceOffline = false;
+          try {
+            var url = new URL(location.href);
+            url.searchParams.delete("__dev_offline");
+            history.replaceState(null, "", url.pathname + url.search + url.hash);
+          } catch (e) {}
+          waitingForRetry = false;
+          probeOk = false;
+          startedAt = Date.now();
+          setOffline(false);
+          probe();
+          tick();
+        });
+
+        if (forceOffline) {
+          setOffline(true);
+        } else {
+          probe();
+          tick();
+        }
+      })();
+    </script>
+  </body>
+</html>

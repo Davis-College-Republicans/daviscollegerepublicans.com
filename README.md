@@ -54,7 +54,7 @@ graph LR;
 ### Cloudflare
 
 - Domain ownership: The domain [daviscollegerepublicans.com](https://daviscollegerepublicans.com) is owned by David Brownlee (@dalekvaderofborg on discord) as of October 6, 2026
-- Costs: $10/mo
+- Costs: $10/yr
 - Connection to static data: This domain points directly to our github pages, with no proxy enabled (no IP address to hide, no need for unecessary added latency)
 - Email: inbox@daviscollegerepublicans.com is a recieving only email inbox (cloudflare email forwarding) which automatically forwards all incoming mail to daviscollegerepublican@gmail.com 
 
