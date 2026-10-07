@@ -4,6 +4,7 @@ name: Deploy
 on:
   push:
     branches: [production]
+  workflow_dispatch: # allow manual re-deploy from the Actions tab
 
 permissions:
   contents: write
