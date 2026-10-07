@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import type { Route } from "./+types/_index";
 import {
     CCR_NAME,
     CCR_URL,
@@ -6,7 +7,12 @@ import {
     MEETINGS_LAST_UPDATED,
     MEETINGS_SUMMARY,
     SITE_NAME,
+    pageMeta,
 } from "../config/site";
+
+export function meta(_: Route.MetaArgs) {
+    return pageMeta({ path: "/" });
+}
 
 const PILLARS = [
     {

@@ -11,7 +11,13 @@ import {
 import type { Route } from "./+types/root";
 import { NotFoundPage, ServerErrorPage } from "./components/error-pages";
 import { SiteShell } from "./components/site-shell";
+import { pageMeta } from "./config/site";
 import "./app.css";
+
+/** Default social / SEO tags — pages can override title/description/path. */
+export function meta(_: Route.MetaArgs) {
+  return pageMeta();
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },

@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import type { Route } from "./+types/discord";
-import { DISCORD_INVITE_URL } from "../config/site";
+import { DISCORD_INVITE_URL, pageMeta } from "../config/site";
 
 export const handle = { bare: true };
 
 export function meta(_: Route.MetaArgs) {
   return [
-    { title: "Discord — Davis College Republicans" },
+    ...pageMeta({
+      title: "Discord",
+      description: "Join the Davis College Republicans Discord server.",
+      path: "/discord",
+    }),
     // GitHub Pages has no custom HTTP 3xx; browser refresh + JS replace below.
     { "http-equiv": "refresh", content: `0;url=${DISCORD_INVITE_URL}` },
   ];

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import type { Route } from "./+types/support";
 import {
   DOMAIN_OWNER_DISCORD_HANDLE,
   DOMAIN_OWNER_NAME,
@@ -12,7 +13,17 @@ import {
   WEBSITE_SUPPORT_DISCORD_HANDLE,
   WEBSITE_SUPPORT_LABEL,
   WEBSITE_SUPPORT_URL,
+  pageMeta,
 } from "../config/site";
+
+export function meta(_: Route.MetaArgs) {
+  return pageMeta({
+    title: "Support",
+    description:
+      "Website and technical support for daviscollegerepublicans.com — maintainers and how to get help.",
+    path: "/support",
+  });
+}
 
 type Step = "start" | "website" | "discord" | "external";
 

@@ -1,6 +1,20 @@
 import { Link } from "react-router";
+import type { Route } from "./+types/contact";
 import { WebhookForm } from "../components/webhook-form";
-import { CLUB_EMAIL, DISCORD_CONTACT_WEBHOOK_URL } from "../config/site";
+import {
+  CLUB_EMAIL,
+  DISCORD_CONTACT_WEBHOOK_URL,
+  pageMeta,
+} from "../config/site";
+
+export function meta(_: Route.MetaArgs) {
+  return pageMeta({
+    title: "Contact",
+    description:
+      "Contact the Davis College Republicans — Discord, membership, and website questions.",
+    path: "/contact",
+  });
+}
 
 export default function Contact(): React.ReactNode {
   return (

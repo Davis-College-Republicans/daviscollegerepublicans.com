@@ -1,6 +1,20 @@
 import { Link } from "react-router";
+import type { Route } from "./+types/join";
 import { WebhookForm } from "../components/webhook-form";
-import { DISCORD_JOIN_WEBHOOK_URL, MEETINGS_SUMMARY } from "../config/site";
+import {
+  DISCORD_JOIN_WEBHOOK_URL,
+  MEETINGS_SUMMARY,
+  pageMeta,
+} from "../config/site";
+
+export function meta(_: Route.MetaArgs) {
+  return pageMeta({
+    title: "Join",
+    description:
+      "Join the Davis College Republicans at UC Davis — Discord, weekly meetings, and how to get involved.",
+    path: "/join",
+  });
+}
 
 export default function Join(): React.ReactNode {
   if (!DISCORD_JOIN_WEBHOOK_URL) {
