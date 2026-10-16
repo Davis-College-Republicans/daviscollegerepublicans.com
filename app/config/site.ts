@@ -84,6 +84,6 @@ export const DISCORD_CONTACT_WEBHOOK_URL = "";
 export const DISCORD_JOIN_WEBHOOK_URL = "";
 
 /** Shown on the Meetings section — bump when the schedule changes. */
-export const MEETINGS_LAST_UPDATED = "October 6, 2026";
+export const MEETINGS_LAST_UPDATED = "October 15, 2026";
 
-export const MEETINGS_SUMMARY = "Wednesdays · Wellman 226 · 7:00 PM";
+export const MEETINGS_SUMMARY = "Wednesdays · Wellman 206 · 7:00 PM";
