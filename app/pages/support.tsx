@@ -2,14 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/support";
 import {
-  DOMAIN_OWNER_DISCORD_HANDLE,
-  DOMAIN_OWNER_NAME,
   GITHUB_REPO_LABEL,
   GITHUB_REPO_URL,
   SITE_NAME,
-  TECHNICAL_OWNERS_LAST_UPDATED,
   WEBSITE_MAINTAINER_NAME,
-  WEBSITE_MAINTAINER_URL,
   WEBSITE_SUPPORT_DISCORD_HANDLE,
   WEBSITE_SUPPORT_LABEL,
   WEBSITE_SUPPORT_URL,
@@ -142,24 +138,8 @@ export default function Support(): React.ReactNode {
       </div>
 
       <div className="support-meta" id="technical-owners">
-        <h2 className="title-plain support-meta-title">
-          <span aria-hidden="true">*</span>Current DCR Website Maintainers
-        </h2>
-        <p>
-          Webpage Maintainer:{" "}
-          <a href={WEBSITE_MAINTAINER_URL}>{WEBSITE_MAINTAINER_NAME}</a>{" "}
-          (Discord{" "}
-          <Link to="/discord">@{WEBSITE_SUPPORT_DISCORD_HANDLE}</Link>)
-        </p>
-        <p>
-          Domain Owner: {DOMAIN_OWNER_NAME} (Discord{" "}
-          <Link to="/discord">@{DOMAIN_OWNER_DISCORD_HANDLE}</Link>)
-        </p>
         <p>
           Source: <a href={GITHUB_REPO_URL}>{GITHUB_REPO_LABEL}</a>
-        </p>
-        <p className="support-meta-updated">
-          Updated {TECHNICAL_OWNERS_LAST_UPDATED}
         </p>
       </div>
     </section>
