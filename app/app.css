@@ -928,22 +928,8 @@
     scroll-margin-top: calc(var(--header-height) + 1rem);
   }
 
-  .support-meta-title {
-    margin-bottom: 0.2rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-ink);
-  }
-
   .support-meta p {
     margin: 0;
-  }
-
-  .support-meta-updated {
-    margin-top: 0.25rem !important;
-    font-size: 0.7rem;
-    font-style: italic;
-    opacity: 0.7;
   }
 
   .support-meta a {
