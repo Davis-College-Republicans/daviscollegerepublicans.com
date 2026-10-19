@@ -32,9 +32,10 @@ export function LinkIcon({
     case "member":
       return (
         <svg {...common}>
-          <path d="M9 18h6" />
-          <path d="M10 21h4" />
-          <path d="M12 3a6 6 0 0 0-3.2 11.1V16h6.4v-1.9A6 6 0 0 0 12 3z" />
+          <circle cx="10" cy="8" r="3" />
+          <path d="M4.5 19.2a5.5 5.5 0 0 1 11 0" />
+          <path d="M18 10v6" />
+          <path d="M15 13h6" />
         </svg>
       );
     case "aggielife":

@@ -27,7 +27,7 @@ export default function LinksPage(): React.ReactNode {
       />
       <h1>{LINK_TREE.title}</h1>
       <p className="link-tree-tagline">{LINK_TREE.tagline}</p>
-      <p className="link-tree-bio">{LINK_TREE.bio}</p>
+      {LINK_TREE.bio ? <p className="link-tree-bio">{LINK_TREE.bio}</p> : null}
 
       <ul className="link-tree-list">
         {LINK_TREE.links.map((item) => {

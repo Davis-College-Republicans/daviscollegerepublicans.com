@@ -88,7 +88,7 @@ export const SOCIAL_LINKS = [
 export const LINK_TREE = {
   title: SITE_NAME,
   tagline: "🇺🇸 The Best Party on Campus! 🇺🇸",
-  bio: "Check our Instagram for meeting info!",
+  bio: "",
   avatar: "/DCR.webp",
   links: SOCIAL_LINKS,
 } as const;
