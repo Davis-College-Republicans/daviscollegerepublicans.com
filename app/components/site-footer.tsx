@@ -11,10 +11,10 @@ const NAV_LINKS = [
 
 const UTILITY_LINKS = [
   { to: "/directory", label: "Site Directory" },
-  { to: GITHUB_REPO_URL, label: "Source" },
+  { to: GITHUB_REPO_URL, label: "Source Code" },
 ] as const;
 
-const FOOTER_ICONS = ["discord", "instagram", "facebook", "twitter"] as const;
+const FOOTER_ICONS = ["discord", "instagram", "twitter", "facebook"] as const;
 
 function isInternal(href: string) {
   return href.startsWith("/") && !href.startsWith("//");
@@ -66,11 +66,11 @@ function SocialBar(): React.ReactNode {
           rel="noopener noreferrer"
           aria-label={label}
         >
-          <LinkIcon name={icon} size={18} />
+          <LinkIcon name={icon} size={20} />
         </a>
       ))}
       <a href="/links" target="_blank" rel="noopener noreferrer" aria-label="Link tree">
-        <LinkIcon name="link" size={18} />
+        <LinkIcon name="link" size={20} />
       </a>
     </nav>
   );

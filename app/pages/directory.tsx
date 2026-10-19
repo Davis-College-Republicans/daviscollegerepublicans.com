@@ -9,7 +9,7 @@ const PAGES = [
   { to: "/support", label: "Support" },
   { to: "/links", label: "Links" },
   { to: "/discord", label: "Discord" },
-  { to: GITHUB_REPO_URL, label: "Source" },
+  { to: GITHUB_REPO_URL, label: "Source Code" },
 ] as const;
 
 export function meta(_: Route.MetaArgs) {
