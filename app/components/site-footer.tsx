@@ -1,13 +1,20 @@
 import { Link } from "react-router";
-import { SITE_NAME, SOCIAL_LINKS } from "../config/site";
+import { GITHUB_REPO_URL, SITE_NAME, SOCIAL_LINKS } from "../config/site";
 import { LinkIcon } from "./link-icon";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "/links", label: "Links" },
+  { to: "/join", label: "Join Us" },
   { to: "/contact", label: "Contact" },
   { to: "/support", label: "Support" },
 ] as const;
+
+const UTILITY_LINKS = [
+  { to: "/directory", label: "Site Directory" },
+  { to: GITHUB_REPO_URL, label: "Source" },
+] as const;
+
+const FOOTER_ICONS = ["discord", "instagram", "facebook", "twitter"] as const;
 
 function isInternal(href: string) {
   return href.startsWith("/") && !href.startsWith("//");
@@ -45,9 +52,13 @@ function DotNav({
 }
 
 function SocialBar(): React.ReactNode {
+  const links = FOOTER_ICONS.flatMap((icon) =>
+    SOCIAL_LINKS.filter((item) => item.icon === icon),
+  );
+
   return (
     <nav className="site-footer-social" aria-label="Social links">
-      {SOCIAL_LINKS.map(({ label, href, icon }) => {
+      {links.map(({ label, href, icon }) => {
         const iconNode = <LinkIcon name={icon} size={18} />;
         if (isInternal(href)) {
           return (
@@ -87,6 +98,14 @@ export function SiteFooter(): React.ReactNode {
     </div>
   );
 
+  const utility = (
+    <DotNav
+      className="site-footer-utility"
+      ariaLabel="Site utilities"
+      items={UTILITY_LINKS}
+    />
+  );
+
   const reach = (
     <DotNav className="site-footer-reach" ariaLabel="Site pages" items={NAV_LINKS} />
   );
@@ -95,15 +114,19 @@ export function SiteFooter(): React.ReactNode {
     <footer className="site-footer">
       <div className="site-footer-mobile">
         {credits}
+        {utility}
         {reach}
         <SocialBar />
       </div>
 
       <div className="site-footer-desktop">
-        <div className="site-footer-desktop-left">{credits}</div>
+        <div className="site-footer-desktop-left">
+          {credits}
+          {utility}
+        </div>
         <div className="site-footer-desktop-right">
-          {reach}
           <SocialBar />
+          {reach}
         </div>
       </div>
     </footer>
