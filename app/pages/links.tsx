@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import type { Route } from "./+types/links";
 import { LinkIcon } from "../components/link-icon";
 import { LINK_TREE, pageMeta } from "../config/site";
@@ -9,10 +8,6 @@ export function meta(_: Route.MetaArgs) {
     description: `${LINK_TREE.title} — Discord, membership, and social links.`,
     path: "/links",
   });
-}
-
-function isInternal(href: string) {
-  return href.startsWith("/") && !href.startsWith("//");
 }
 
 export default function LinksPage(): React.ReactNode {
@@ -47,20 +42,14 @@ export default function LinksPage(): React.ReactNode {
 
           return (
             <li key={item.href}>
-              {isInternal(item.href) ? (
-                <Link className="link-tree-row" to={item.href}>
-                  {body}
-                </Link>
-              ) : (
-                <a
-                  className="link-tree-row"
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {body}
-                </a>
-              )}
+              <a
+                className="link-tree-row"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {body}
+              </a>
             </li>
           );
         })}

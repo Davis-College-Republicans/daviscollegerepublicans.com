@@ -58,30 +58,20 @@ function SocialBar(): React.ReactNode {
 
   return (
     <nav className="site-footer-social" aria-label="Social links">
-      {links.map(({ label, href, icon }) => {
-        const iconNode = <LinkIcon name={icon} size={18} />;
-        if (isInternal(href)) {
-          return (
-            <Link key={href} to={href} aria-label={label}>
-              {iconNode}
-            </Link>
-          );
-        }
-        return (
-          <a
-            key={href}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-          >
-            {iconNode}
-          </a>
-        );
-      })}
-      <Link to="/links" aria-label="Link tree">
+      {links.map(({ label, href, icon }) => (
+        <a
+          key={href}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+        >
+          <LinkIcon name={icon} size={18} />
+        </a>
+      ))}
+      <a href="/links" target="_blank" rel="noopener noreferrer" aria-label="Link tree">
         <LinkIcon name="link" size={18} />
-      </Link>
+      </a>
     </nav>
   );
 }
