@@ -738,11 +738,16 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0;
     font-size: 0.72rem;
     line-height: 1.4;
     color: var(--color-ink-muted);
     opacity: 0.72;
+  }
+
+  .site-footer-utility .site-footer-dot {
+    display: inline;
+    margin-inline: 0.45rem;
   }
 
   .site-footer-utility a {
