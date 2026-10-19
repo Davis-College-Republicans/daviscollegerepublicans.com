@@ -3,8 +3,6 @@ import type { Route } from "./+types/links";
 import { LinkIcon } from "../components/link-icon";
 import { LINK_TREE, pageMeta } from "../config/site";
 
-export const handle = { bare: true };
-
 export function meta(_: Route.MetaArgs) {
   return pageMeta({
     title: "Links",
@@ -19,7 +17,7 @@ function isInternal(href: string) {
 
 export default function LinksPage(): React.ReactNode {
   return (
-    <main className="link-tree">
+    <section className="home-section link-tree">
       <img
         className="link-tree-avatar"
         src={LINK_TREE.avatar}
@@ -27,7 +25,7 @@ export default function LinksPage(): React.ReactNode {
         width={96}
         height={96}
       />
-      <h1 className="link-tree-title title-plain">{LINK_TREE.title}</h1>
+      <h1>{LINK_TREE.title}</h1>
       <p className="link-tree-tagline">{LINK_TREE.tagline}</p>
       <p className="link-tree-bio">{LINK_TREE.bio}</p>
 
@@ -67,6 +65,6 @@ export default function LinksPage(): React.ReactNode {
           );
         })}
       </ul>
-    </main>
+    </section>
   );
 }

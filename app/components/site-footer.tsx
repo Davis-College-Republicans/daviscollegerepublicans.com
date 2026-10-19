@@ -68,6 +68,9 @@ function SocialBar(): React.ReactNode {
           </a>
         );
       })}
+      <Link to="/links" aria-label="Link tree">
+        <LinkIcon name="link" size={18} />
+      </Link>
     </nav>
   );
 }

@@ -1106,59 +1106,35 @@
   }
 }
 
-/* /links — standalone link tree (no site chrome) */
+/* /links — same chrome as the rest of the site, narrow centered list */
 .link-tree {
-  box-sizing: border-box;
-  min-height: 100dvh;
-  margin: 0 auto;
-  padding: 3.5rem 1.25rem 4rem;
-  max-width: 28rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: #0c0c0c;
-  color: #f5f5f5;
-}
-
-body:has(.link-tree) {
-  background: #0c0c0c;
 }
 
 .link-tree-avatar {
   width: 6.5rem;
   height: 6.5rem;
   object-fit: contain;
-  border-radius: 999px;
-  background: #fff;
-  padding: 0.35rem;
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 12%);
-}
-
-.link-tree-title {
-  margin-top: 1.15rem;
-  font-size: 1.65rem;
-  color: #fff;
-  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
 }
 
 .link-tree-tagline,
 .link-tree-bio {
-  margin-top: 0.45rem;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #e8e8e8;
-}
-
-.link-tree-bio {
-  color: #cfcfcf;
+  margin-top: 0.85rem;
+  max-width: 28rem;
+  color: var(--color-ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
 
 .link-tree-list {
   list-style: none;
-  margin: 1.75rem 0 0;
+  margin: 2rem 0 0;
   padding: 0;
-  width: 100%;
+  width: min(100%, 28rem);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1170,25 +1146,21 @@ body:has(.link-tree) {
   align-items: center;
   min-height: 3.5rem;
   padding: 0.7rem 0.85rem;
-  border-radius: 999px;
-  background: #2a2a2a;
-  color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-nav);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
   text-decoration: none;
-  transition: background 0.15s ease, transform 0.15s ease;
 }
 
 .link-tree-row:hover {
-  background: #3a3a3a;
-}
-
-.link-tree-row:active {
-  transform: scale(0.99);
+  border-color: var(--color-brand);
 }
 
 .link-tree-icon {
   display: flex;
   justify-content: center;
-  color: #fff;
+  color: var(--color-brand);
 }
 
 .link-tree-copy {
@@ -1200,19 +1172,13 @@ body:has(.link-tree) {
 }
 
 .link-tree-label {
-  font-weight: 650;
+  font-weight: 700;
   font-size: 1.02rem;
   line-height: 1.2;
 }
 
 .link-tree-desc {
   font-size: 0.82rem;
-  color: #bdbdbd;
+  color: var(--color-ink-muted);
   line-height: 1.2;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .link-tree-row {
-    transition: none;
-  }
 }
