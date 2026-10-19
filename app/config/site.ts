@@ -81,7 +81,7 @@ export const SOCIAL_LINKS = [
     href: "https://facebook.com/DavisCollegeRepublicans/",
     icon: "facebook",
   },
-  { label: "Twitter", href: "https://x.com/daviscollegerep", icon: "twitter" },
+  { label: "X/Twitter", href: "https://x.com/daviscollegerep", icon: "twitter" },
 ] as const;
 
 /** Copy around the /links page. The buttons themselves are SOCIAL_LINKS. */
