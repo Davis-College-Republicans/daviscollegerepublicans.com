@@ -48,8 +48,50 @@ export const CCR_URL = "https://cacollegegop.org/";
 /** Public inbox. Leave empty to hide email on /contact. */
 export const CLUB_EMAIL = "";
 
-/** Footer social bar. Internal paths use client routing; full URLs open externally. */
-export const SOCIAL_LINKS = [{ label: "Discord", href: "/discord" }] as const;
+/**
+ * Club links. Used by the footer icon row and the /links page.
+ * Paths starting with "/" stay on this site; full URLs open in a new tab.
+ * icon names are rendered by LinkIcon. description is optional (shown on /links).
+ */
+export const SOCIAL_LINKS = [
+  {
+    label: "Join our Discord!",
+    description: "Discord Server · Free to join",
+    href: "/discord",
+    icon: "discord",
+  },
+  {
+    label: "Become a Member!",
+    href: "/join",
+    icon: "member",
+  },
+  {
+    label: "AggieLife",
+    description: "Official club page",
+    href: "https://aggielife.ucdavis.edu/daviscollegerepublicans/home/",
+    icon: "aggielife",
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/daviscollegerepublicans/",
+    icon: "instagram",
+  },
+  {
+    label: "Facebook",
+    href: "https://facebook.com/DavisCollegeRepublicans/",
+    icon: "facebook",
+  },
+  { label: "X/Twitter", href: "https://x.com/daviscollegerep", icon: "twitter" },
+] as const;
+
+/** Copy around the /links page. The buttons themselves are SOCIAL_LINKS. */
+export const LINK_TREE = {
+  title: SITE_NAME,
+  tagline: "🇺🇸 The Best Party on Campus! 🇺🇸",
+  bio: "",
+  avatar: "/DCR.webp",
+  links: SOCIAL_LINKS,
+} as const;
 
 /** Website (not club) technical support — shown on /support. */
 export const WEBSITE_SUPPORT_DISCORD_HANDLE = "vijitdua";
