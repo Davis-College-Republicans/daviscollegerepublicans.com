@@ -16,7 +16,7 @@
  * Dates are ISO (YYYY-MM-DD). `end: null` = still serving.
  *
  * History before 2026 was not kept in full. The current tenures use
- * 2026-01-01 as the start of the public record, not a sworn-in day.
+ * 2026-10-01 as the start of the public record, not a sworn-in day.
  * Replace that date when a real start is known. Leave out details the
  * member asked not to publish.
  */
@@ -94,7 +94,7 @@ export const PEOPLE: Person[] = [
 ];
 
 /** Public record begins in 2026. Earlier terms can be added when someone writes them down. */
-const RECORD_START = "2026-01-01";
+const RECORD_START = "2026-10-01";
 
 export const TENURES: Tenure[] = [
   { personSlug: "lucas-featherston", role: "President", start: RECORD_START, end: null },
