@@ -27,7 +27,8 @@ export type Person = {
   bio: string;
   /** Shown as a "Founder" tag everywhere. */
   founder?: boolean;
-  email?: string;
+  /** One or more public emails. Each is shown as its own mailto link. */
+  emails?: readonly string[];
   discordHandle?: string;
   discordUserId?: string;
   instagram?: string;
@@ -62,6 +63,11 @@ export const PEOPLE: Person[] = [
     slug: "david-brownlee",
     name: "David Brownlee",
     photoSrc: "/team/david-brownlee.webp",
+    emails: ["dgbrownlee@ucdavis.edu"],
+    discordHandle: "dalekvaderofborg",
+    discordUserId: "1338836443572994089",
+    instagram: "https://www.instagram.com/davidgbrownlee/",
+    twitter: "https://x.com/Davidgbrownlee",
     bio: `
     Hey everyone, I'm David Brownlee. I am a third year student majoring in Political Science & Economics with a previous intended major of History. I am highly influenced by the works of Patrick J. Buchanan, Ayn Rand, and Milton Friedman and have identified myself as a student of right wing economic and social thought for the 5 years. As a self described libertarian nationalist, I take a particular interest in laissez faire economic policies, and the importance of immigration control. My primary extracurricular interests are in history, philosophy, and the military. I also love horror movies, hunting, and woodwork.
 
@@ -72,9 +78,13 @@ export const PEOPLE: Person[] = [
     slug: "vijit-dua",
     name: "Vijit Dua",
     photoSrc: "/team/vijit-dua.webp",
+    emails: ["vijdua@ucdavis.edu"],
     discordHandle: "vijitdua",
     discordUserId: "933604018951974924",
-    url: "https://vijitdua.com",
+    instagram: "https://www.instagram.com/vijitdua/",
+    linkedin: "https://www.linkedin.com/in/vijitdua",
+    twitter: "https://x.com/vijitdua",
+    url: "https://vijitdua.com/links",
     bio: `
     Hey everyone! I’m Vijit Dua, a 4th year Comp. Sci. major at UC Davis, international student, nerd, music producer, & DCR’s Tech Officer 🤖.
 

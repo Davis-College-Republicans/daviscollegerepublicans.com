@@ -105,12 +105,12 @@ export function PersonLinks({
   const discordUrl = discordProfileUrl(person);
   return (
     <div className="team-links">
-      {person.email ? (
-        <a href={`mailto:${person.email}`} target="_blank" rel="noopener">
+      {(person.emails ?? []).map((email) => (
+        <a key={email} href={`mailto:${email}`} target="_blank" rel="noopener">
           <MailIcon />
-          {person.email}
+          {email}
         </a>
-      ) : null}
+      ))}
       {!emailOnly && person.discordHandle ? (
         discordUrl ? (
           <a href={discordUrl} target="_blank" rel="noopener">
