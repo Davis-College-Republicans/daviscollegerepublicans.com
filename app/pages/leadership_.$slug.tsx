@@ -82,7 +82,7 @@ export default function LeadershipPerson({
           person={person}
           role={seat?.role ?? "Member"}
           csiTitle={seat?.csiTitle}
-          range={seat ? fmtRange(seat.start, null) : undefined}
+          range={seat?.start ? fmtRange(seat.start, null) : undefined}
           linkName={false}
           heading="h1"
         />

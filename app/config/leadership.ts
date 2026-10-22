@@ -2,8 +2,8 @@
  * Current officers only.
  *
  * This site does not keep a history of past rosters. Add a person to PEOPLE,
- * then add one OFFICERS row for the seat they hold now. `start` is the ISO
- * date they took that seat (YYYY-MM-DD). Bump LEADERSHIP_LAST_UPDATED.
+ * then add one OFFICERS row for the seat they hold now. `start`, when known,
+ * is the ISO date they took that seat (YYYY-MM-DD). Bump LEADERSHIP_LAST_UPDATED.
  *
  * Bio edits stay on PEOPLE. Role changes: update that person's OFFICERS row.
  */
@@ -30,12 +30,24 @@ export type OfficerSeat = {
   role: string;
   /** CSI / AggieLife title on paper (Primary / Secondary / Treasurer). */
   csiTitle?: string;
-  start: string;
+  /** ISO date they took the seat. Omit until known — the range heading stays hidden. */
+  start?: string;
 };
 
-export const PEOPLE: Person[] = [];
+export const PEOPLE: Person[] = [
+  {
+    slug: "david-brownlee",
+    name: "David Brownlee",
+    photoSrc: "/team/david-brownlee.webp",
+    bio: `
+    David Brownlee is a third year Political Science and Economics major with an interest in a career in political administration. Highly influenced by the works of Pat Buchanan, Ayn Rand, and Milton Friedman; he has identified himself as a student of right wing economic and social thought for the last 5 years. David's primary interests are in debate, reading, and discussion. When not discussing politics, you can find him talking about the most recent historical topic he's invested himself into studying.
+    `.trim(),
+  },
+];
 
-export const OFFICERS: OfficerSeat[] = [];
+export const OFFICERS: OfficerSeat[] = [
+  { personSlug: "david-brownlee", role: "Communications Officer" },
+];
 
 export const LEADERSHIP_LAST_UPDATED = "October 22, 2026";
 
@@ -51,6 +63,7 @@ const ROLE_ORDER = [
   "External Vice President",
   "Treasurer",
   "Secretary",
+  "Communications Officer",
 ];
 
 export function getPerson(slug: string): Person | undefined {
@@ -70,7 +83,7 @@ export type Officer = {
   person: Person;
   role: string;
   csiTitle?: string;
-  start: string;
+  start?: string;
 };
 
 function toOfficer(seat: OfficerSeat): Officer | null {
@@ -88,7 +101,7 @@ function byRole(a: Officer, b: Officer) {
   const ra = ROLE_ORDER.indexOf(a.role);
   const rb = ROLE_ORDER.indexOf(b.role);
   if (ra !== rb) return (ra === -1 ? 99 : ra) - (rb === -1 ? 99 : rb);
-  return a.start.localeCompare(b.start) || a.person.name.localeCompare(b.person.name);
+  return (a.start ?? "").localeCompare(b.start ?? "") || a.person.name.localeCompare(b.person.name);
 }
 
 /** Everyone listed in OFFICERS, in role order. */
@@ -107,7 +120,10 @@ export function officerFor(slug: string): Officer | undefined {
  * Undefined when nobody is listed.
  */
 export function currentRosterStart(): string | undefined {
-  const starts = currentOfficers().map((o) => o.start).sort();
+  const starts = currentOfficers()
+    .map((o) => o.start)
+    .filter((start): start is string => Boolean(start))
+    .sort();
   return starts.at(-1);
 }
 
