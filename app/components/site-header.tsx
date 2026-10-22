@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 
 const NAV = [
   { to: "/#about", label: "About" },
+  { to: "/leadership", label: "Team" },
   { to: "/#meetings", label: "Meetings" },
   { to: "/contact", label: "Contact" },
   { to: "/join", label: "Join" },
@@ -12,6 +13,9 @@ const NAV = [
 function isNavActive(pathname: string, hash: string, to: string) {
   if (to.startsWith("/#")) {
     return pathname === "/" && hash === to.slice(1);
+  }
+  if (to === "/leadership") {
+    return pathname === "/leadership" || pathname.startsWith("/leadership/");
   }
   return pathname === to;
 }

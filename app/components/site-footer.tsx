@@ -4,6 +4,7 @@ import { LinkIcon } from "./link-icon";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
+  { to: "/leadership", label: "Team" },
   { to: "/join", label: "Join Us" },
   { to: "/contact", label: "Contact" },
   { to: "/support", label: "Support" },
