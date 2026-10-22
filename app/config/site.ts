@@ -6,37 +6,72 @@ export const SITE_DESCRIPTION =
 /** Absolute URL for Open Graph / Discord / Twitter link previews. */
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
+export function absoluteUrl(pathOrUrl: string): string {
+  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+  return `${SITE_URL}${pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`}`;
+}
+
+/** Collapse markdown/whitespace into a single-line meta description. */
+export function metaDescription(text: string, max = 180): string {
+  const plain = text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_~`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (plain.length <= max) return plain;
+  const slice = plain.slice(0, max - 1);
+  const at = slice.lastIndexOf(" ");
+  return `${slice.slice(0, at > 40 ? at : max - 1)}…`;
+}
+
 /** Shared title + description + Open Graph / Twitter tags for link embeds. */
 export function pageMeta({
   title,
   description = SITE_DESCRIPTION,
   path = "/",
+  image,
+  imageAlt,
+  type = "website",
+  jsonLd,
 }: {
   title?: string;
   description?: string;
   path?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: "website" | "profile";
+  jsonLd?: Record<string, unknown>;
 } = {}) {
   const fullTitle = title ? `${title} — ${SITE_NAME}` : SITE_NAME;
   const url = path === "/" ? SITE_URL : `${SITE_URL}${path}`;
+  const imageUrl = image ? absoluteUrl(image) : SITE_OG_IMAGE;
+  const alt = imageAlt ?? SITE_NAME;
 
-  return [
+  const tags: Record<string, unknown>[] = [
     { title: fullTitle },
     { name: "description", content: description },
-    { property: "og:type", content: "website" },
+    { property: "og:type", content: type },
     { property: "og:site_name", content: SITE_NAME },
     { property: "og:title", content: fullTitle },
     { property: "og:description", content: description },
     { property: "og:url", content: url },
-    { property: "og:image", content: SITE_OG_IMAGE },
-    { property: "og:image:width", content: "1200" },
-    { property: "og:image:height", content: "630" },
-    { property: "og:image:alt", content: SITE_NAME },
+    { property: "og:image", content: imageUrl },
+    { property: "og:image:alt", content: alt },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: fullTitle },
     { name: "twitter:description", content: description },
-    { name: "twitter:image", content: SITE_OG_IMAGE },
+    { name: "twitter:image", content: imageUrl },
     { name: "theme-color", content: "#c41230" },
   ];
+
+  if (!image) {
+    tags.push(
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+    );
+  }
+  if (jsonLd) tags.push({ "script:ld+json": jsonLd });
+  return tags;
 }
 
 export const DISCORD_INVITE_URL = "https://discord.gg/7npZ52GmUQ";

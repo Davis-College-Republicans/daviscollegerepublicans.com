@@ -4,6 +4,7 @@ import { GITHUB_REPO_URL, pageMeta } from "../config/site";
 
 const PAGES = [
   { to: "/", label: "Home" },
+  { to: "/leadership", label: "Team" },
   { to: "/join", label: "Join" },
   { to: "/contact", label: "Contact" },
   { to: "/support", label: "Support" },

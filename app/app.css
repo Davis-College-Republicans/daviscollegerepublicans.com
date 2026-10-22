@@ -1238,3 +1238,203 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Staff rows, same idea as theaggie.org/contact: square photo, name, title, bio, plain links. */
+.team-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.team-member {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 1.75rem;
+  align-items: start;
+  padding: 1.75rem 0;
+}
+
+.team-avatar {
+  width: 9.5rem;
+  height: 9.5rem;
+  border-radius: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-body h1,
+.team-body h2,
+.team-body h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: auto;
+  padding: 0;
+  border: 0;
+}
+
+.team-body h1 {
+  font-size: 1.75rem;
+}
+
+.team-body h1 a,
+.team-body h2 a,
+.team-body h3 a {
+  text-decoration: none;
+}
+
+.team-body h1 a:hover,
+.team-body h2 a:hover,
+.team-body h3 a:hover {
+  color: var(--color-brand);
+}
+
+.team-avatar-sm {
+  width: 3rem;
+  height: 3rem;
+  font-size: 0.9rem;
+}
+
+.team-role {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-ink);
+  line-height: 1.35;
+}
+
+.team-csi {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-ink-muted);
+  line-height: 1.35;
+}
+
+.team-bio {
+  margin: 0.85rem 0 0;
+  max-width: 40rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink);
+  text-align: justify;
+  text-align-last: left;
+}
+
+.team-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 1.15rem;
+  margin: 0.85rem 0 0;
+}
+
+.team-links a,
+.team-links span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-ink-muted);
+}
+
+.team-links a {
+  text-decoration: underline;
+  text-decoration-color: var(--color-ink-muted);
+  text-underline-offset: 3px;
+}
+
+.team-links svg {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.team-links a:hover {
+  color: var(--color-ink);
+  text-decoration-color: var(--color-ink);
+}
+
+.leadership-history {
+  margin-top: 1.25rem;
+}
+
+.history-term + .history-term {
+  margin-top: 3rem;
+}
+
+.history-range {
+  margin: 2.75rem auto 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.history-team-list {
+  margin-top: 0.75rem;
+}
+
+.team-page > h1,
+.team-page > .home-meetings-note {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.team-page .team-member {
+  grid-template-columns: 9.5rem minmax(0, 40rem);
+  justify-content: center;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .team-member,
+  .team-page .team-member {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+    gap: 0.9rem;
+  }
+
+  .team-member .team-body {
+    width: 100%;
+  }
+
+  .team-member .team-bio {
+    margin-inline: auto;
+    text-align: justify;
+    text-align-last: left;
+  }
+
+  .team-member .team-links {
+    justify-content: center;
+  }
+}
+
+.role-history {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.role-history li {
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-ink-muted);
+}
