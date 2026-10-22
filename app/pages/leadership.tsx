@@ -24,8 +24,8 @@ export default function Leadership(): React.ReactNode {
       <div className="support-meta team-record-note">
         <p>Last updated {LEADERSHIP_LAST_UPDATED}.</p>
         <p>
-          Officers from before 2026 are only partly listed. Later years stay
-          selective too — not every role or personal detail is published.
+          Officers from before 2026 are missing here. The current list is
+          voluntary, so it is not a complete roster.
         </p>
       </div>
     </section>
