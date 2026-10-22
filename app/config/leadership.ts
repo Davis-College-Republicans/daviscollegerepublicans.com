@@ -48,7 +48,24 @@ export const PEOPLE: Person[] = [
     name: "David Brownlee",
     photoSrc: "/team/david-brownlee.webp",
     bio: `
-    David Brownlee is a third year Political Science and Economics major with an interest in a career in political administration. Highly influenced by the works of Pat Buchanan, Ayn Rand, and Milton Friedman; he has identified himself as a student of right wing economic and social thought for the last 5 years. David's primary interests are in debate, reading, and discussion. When not discussing politics, you can find him talking about the most recent historical topic he's invested himself into studying.
+    David Brownlee is a third year Political Science and Economics major with an interest in a career in political administration. Highly influenced by the works of Pat Buchanan, Ayn Rand, and Milton Friedman; he has identified himself as a student of right wing economic and social thought for the last 5 years. David's primary interests are in debate, reading, and discussion.     When not discussing politics, you can find him talking about the most recent historical topic he's invested himself into studying.
+    `.trim(),
+  },
+  {
+    slug: "vijit-dua",
+    name: "Vijit Dua",
+    photoSrc: "/team/vijit-dua.webp",
+    discordHandle: "vijitdua",
+    discordUserId: "933604018951974924",
+    url: "https://vijitdua.com",
+    bio: `
+    Hey everyone! I’m Vijit Dua, a 4th year Comp. Sci. major at UC Davis, international student, nerd, music producer, & DCR’s Tech Officer 🤖.
+
+    I’m a moderate at heart. I leaned liberal as a freshman, but being called a Nazi for mild disagreements with my own side (I’m Indian, not an Aryan German, so I’m not sure how that math works 🤔) pushed me to the center, and watching people celebrate Charlie Kirk’s death, a non-official figure whose only “crime” was having an audience and differing opinions, pushed me further.
+
+    Today I lean right on policy, since Republicans currently seem more focused on enforcing the law than on identity politics, but that can change and I judge issues case by case - I'm still a moderate at heart with no long-term affiliation. But, after I wrote an independent journal piece on UC Davis polarization, DCR was the one group that heard me out, and I love it here. Outside the club I bike, run, make music, and code like a nerd.
+
+    Got ideas for our tech or website? Reach out!
     `.trim(),
   },
 ];
@@ -56,6 +73,7 @@ export const PEOPLE: Person[] = [
 export const OFFICERS: OfficerSeat[] = [
   { personSlug: "lucas-featherston", role: "President" },
   { personSlug: "david-brownlee", role: "Communications Officer" },
+  { personSlug: "vijit-dua", role: "Tech Officer" },
 ];
 
 export const LEADERSHIP_LAST_UPDATED = "October 22, 2026";
@@ -73,6 +91,7 @@ const ROLE_ORDER = [
   "Treasurer",
   "Secretary",
   "Communications Officer",
+  "Tech Officer",
 ];
 
 export function getPerson(slug: string): Person | undefined {
