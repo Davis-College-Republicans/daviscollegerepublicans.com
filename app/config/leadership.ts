@@ -48,7 +48,9 @@ export const PEOPLE: Person[] = [
     name: "David Brownlee",
     photoSrc: "/team/david-brownlee.webp",
     bio: `
-    David Brownlee is a third year Political Science and Economics major with an interest in a career in political administration. Highly influenced by the works of Pat Buchanan, Ayn Rand, and Milton Friedman; he has identified himself as a student of right wing economic and social thought for the last 5 years. David's primary interests are in debate, reading, and discussion.     When not discussing politics, you can find him talking about the most recent historical topic he's invested himself into studying.
+    Hey everyone, I'm David Brownlee. I am a third year student majoring in Political Science & Economics with a previous intended major of History. I am highly influenced by the works of Patrick J. Buchanan, Ayn Rand, and Milton Friedman and have identified myself as a student of right wing economic and social thought for the 5 years. As a self described libertarian nationalist, I take a particular interest in laissez faire economic policies, and the importance of immigration control. My primary extracurricular interests are in history, philosophy, and the military. I also love horror movies, hunting, and woodwork.
+
+    Reach out with any inquiries about the club or potential partnerships!
     `.trim(),
   },
   {
