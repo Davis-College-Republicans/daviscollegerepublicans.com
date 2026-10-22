@@ -10,6 +10,8 @@ export default {
     "/join",
     "/support",
     "/discord",
+    "/links",
+    "/directory",
     "/leadership",
     "/team",
     ...allPersonSlugs().map((slug) => `/leadership/${slug}`),
