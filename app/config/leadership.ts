@@ -63,7 +63,7 @@ export const PEOPLE: Person[] = [
     slug: "david-brownlee",
     name: "David Brownlee",
     photoSrc: "/team/david-brownlee.webp",
-    emails: ["dgbrownlee@ucdavis.edu"],
+    emails: ["dgbrownlee@ucdavis.edu", "david.g.brownlee@gmail.com"],
     discordHandle: "dalekvaderofborg",
     discordUserId: "1338836443572994089",
     instagram: "https://www.instagram.com/davidgbrownlee/",
