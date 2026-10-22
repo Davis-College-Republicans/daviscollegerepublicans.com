@@ -36,6 +36,14 @@ export type OfficerSeat = {
 
 export const PEOPLE: Person[] = [
   {
+    slug: "lucas-featherston",
+    name: "Lucas Featherston",
+    photoSrc: "/team/lucas-featherston.webp",
+    bio: `
+    My name is Lucas Featherston. I am a Second Year Plant Sciences Student with an emphasis in Plant Breeding, Genetics, and Genomics. My interests include but are not limited to politics, government, history, political activism, agriculture, genetics, entomology. Politically I would describe myself as a paleoconservative, highly influenced by Pat J. Buchanan, Edmund Burke, and C.S. Lewis. I am a proud Roman Catholic as well! When not studying for an exam or farming I like to spend time outdoors fishing, hiking, and sometimes working on cars.
+    `.trim(),
+  },
+  {
     slug: "david-brownlee",
     name: "David Brownlee",
     photoSrc: "/team/david-brownlee.webp",
@@ -46,6 +54,7 @@ export const PEOPLE: Person[] = [
 ];
 
 export const OFFICERS: OfficerSeat[] = [
+  { personSlug: "lucas-featherston", role: "President" },
   { personSlug: "david-brownlee", role: "Communications Officer" },
 ];
 
