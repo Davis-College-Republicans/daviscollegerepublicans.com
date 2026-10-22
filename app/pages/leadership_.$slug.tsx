@@ -1,7 +1,7 @@
 import { Link, data } from "react-router";
 import type { Route } from "./+types/leadership_.$slug";
 import { TeamMember } from "../components/team-member";
-import { fmtRange, getPerson, officerFor } from "../config/leadership";
+import { fmtRange, getPerson, isCurrent, tenuresFor } from "../config/leadership";
 import {
   SITE_NAME,
   SITE_URL,
@@ -20,8 +20,13 @@ export function meta({ params }: Route.MetaArgs) {
     });
   }
 
-  const seat = officerFor(person.slug);
-  const role = seat?.role ?? "Member";
+  const history = tenuresFor(person.slug);
+  const latest = history.find((h) => h.tenure.end === null) ?? history[0];
+  const role = latest
+    ? isCurrent(person.slug)
+      ? latest.role
+      : `Former ${latest.role}`
+    : "Member";
   const [first, ...rest] = person.name.split(/\s+/);
   const last = rest.join(" ");
   const bioLead = person.bio.split(/\n\s*\n/)[0] ?? person.bio;
@@ -67,7 +72,11 @@ export default function LeadershipPerson({
     throw data("Not Found", { status: 404 });
   }
 
-  const seat = officerFor(person.slug);
+  const history = tenuresFor(person.slug);
+  const now = history.find((h) => h.tenure.end === null);
+  const latest = now ?? history[0];
+  const current = isCurrent(person.slug);
+  const earlier = latest ? history.filter((h) => h !== latest) : history;
 
   return (
     <section className="home-section">
@@ -80,13 +89,29 @@ export default function LeadershipPerson({
       <ul className="team-list" style={{ marginTop: "1rem" }}>
         <TeamMember
           person={person}
-          role={seat?.role ?? "Member"}
-          csiTitle={seat?.csiTitle}
-          range={seat?.start ? fmtRange(seat.start, null) : undefined}
+          role={
+            latest ? (current ? latest.role : `Former ${latest.role}`) : "Member"
+          }
+          csiTitle={latest?.csiTitle}
+          range={
+            latest ? fmtRange(latest.tenure.start, latest.tenure.end) : undefined
+          }
           linkName={false}
           heading="h1"
         />
       </ul>
+
+      {earlier.length > 0 ? (
+        <ul className="role-history">
+          {earlier.map(({ role, tenure }) => (
+            <li key={`${tenure.start}-${role}`}>
+              {role}
+              {" · "}
+              {fmtRange(tenure.start, tenure.end)}
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </section>
   );
 }

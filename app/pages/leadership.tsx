@@ -21,9 +21,13 @@ export default function Leadership(): React.ReactNode {
     <section className="home-section team-page">
       <h1>{`The ${SITE_NAME} Team`}</h1>
       <LeadershipTimeline />
-      <p className="home-meetings-note" style={{ marginTop: "2rem" }}>
-        Last updated {LEADERSHIP_LAST_UPDATED}.
-      </p>
+      <div className="support-meta team-record-note">
+        <p>Last updated {LEADERSHIP_LAST_UPDATED}.</p>
+        <p>
+          Officers from before 2026 are only partly listed. Later years stay
+          selective too — not every role or personal detail is published.
+        </p>
+      </div>
     </section>
   );
 }

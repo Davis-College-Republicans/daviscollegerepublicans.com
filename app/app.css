@@ -1391,10 +1391,24 @@
   margin-top: 0.75rem;
 }
 
+.team-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .team-page > h1,
 .team-page > .home-meetings-note {
   margin-inline: auto;
   text-align: center;
+}
+
+.team-page .team-record-note {
+  margin-top: auto;
+  width: min(40rem, 100%);
+  margin-inline: auto;
+  text-align: center;
+  align-items: center;
 }
 
 .team-page .team-member {
