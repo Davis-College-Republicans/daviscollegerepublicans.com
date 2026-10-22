@@ -86,13 +86,9 @@ export const PEOPLE: Person[] = [
     twitter: "https://x.com/vijitdua",
     url: "https://vijitdua.com/links",
     bio: `
-    Hey everyone! I’m Vijit Dua, a 4th year Comp. Sci. major at UC Davis, international student, nerd, music producer, & DCR’s Tech Officer 🤖.
+    I’m Vijit Dua, a 4th year CS major at UC Davis, international student, coding nerd, music producer, and DCR’s Tech Officer 🤖. I’m a moderate at heart. I used to lean liberal as a freshman, but being called a Nazi for mild disagreements with my own side (I’m Indian, not an Aryan German, not sure how the math works 🤔) and watching people celebrate Charlie Kirk’s death pushed me away from the left to the center. Not that it matters since I'm an international student, but today I lean right on policy, since from my perspective Republicans currently seem more focused on enforcing the law than on identity politics, but that can change and I judge issues case by case. After I wrote an [essay on UC Davis polarization](https://vijitdua.com/blog/WBTZE6mR), DCR was the one group that heard me out, and I love it here.
 
-    I’m a moderate at heart. I leaned liberal as a freshman, but being called a Nazi for mild disagreements with my own side (I’m Indian, not an Aryan German, so I’m not sure how that math works 🤔) pushed me to the center, and watching people celebrate Charlie Kirk’s death, a non-official figure whose only “crime” was having an audience and differing opinions, pushed me further.
-
-    Today I lean right on policy, since Republicans currently seem more focused on enforcing the law than on identity politics, but that can change and I judge issues case by case - I'm still a moderate at heart with no long-term affiliation. But, after I wrote an independent journal piece on UC Davis polarization, DCR was the one group that heard me out, and I love it here. Outside the club I bike, run, make music, and code like a nerd.
-
-    Got ideas for our tech or website? Reach out!
+    Outside the club I bike, run, make music, and code like a nerd. Got ideas for our tech or website? Reach out!
     `.trim(),
   },
 ];
